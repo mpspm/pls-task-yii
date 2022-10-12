@@ -11,7 +11,7 @@
 
 class RssHelper
 {
-  public static function getItems(string $url, int $limit = 0, string $cacheDirectory, int $cacheExpiration, string $userAgent)
+  public static function getItems(string $url, int $limit = 0, string $cacheDirectory, int $cacheExpiration, string $userAgent): Array
   {
     Feed::$userAgent = $userAgent;
     Feed::$cacheDir = $cacheDirectory;
