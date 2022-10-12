@@ -13,8 +13,8 @@ $this->breadcrumbs = [
 
 <div class="row">
 	<?php
-	if (!empty($updates)) {
-		foreach ($updates as $item) {
+	if (!empty($rssItems)) {
+		foreach ($rssItems as $item) {
 			?>
 			<div class="col-md-12 update">
 				<h3><a href="<?= $item->link ?>" target="_blank"><?= $item->title ?></a></h3>
