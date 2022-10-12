@@ -114,7 +114,7 @@ class HelpController extends Controller
    */
   public function actionUpdates()
   {
-    $rssItems = RssHelper::getItems(Yii::app()->params['productUpdatesFeedUrl'], 5, Yii::app()->basePath . Yii::app()->params['productUpdatesFeedCacheDir'], Yii::app()->params['productUpdatesFeedCacheExp'], Yii::app()->params['curlUserAgent']);
+    $rssItems = RssHelper::getItemsByLimit(5, Yii::app()->params['productUpdatesFeedUrl'], Yii::app()->basePath . Yii::app()->params['productUpdatesFeedCacheDir'], Yii::app()->params['productUpdatesFeedCacheExp'], Yii::app()->params['curlUserAgent']);
     if (count($rssItems) > 0) {
       foreach ($rssItems as $item) {
         $more = ' <a href="' . $item->link . '" target="_blank">Read more</a>';

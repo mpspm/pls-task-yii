@@ -89,14 +89,14 @@ class SiteController extends Controller
         $this->redirect(Yii::app()->user->returnUrl);
       }
     }
-    $latestProductUpdates = RssHelper::getItems(Yii::app()->params['productUpdatesFeedUrl'], 1, Yii::app()->basePath . Yii::app()->params['productUpdatesFeedCacheDir'], Yii::app()->params['productUpdatesFeedCacheExp'], Yii::app()->params['curlUserAgent']);
+    $latestProductUpdates = RssHelper::getItemsByLimit(1, Yii::app()->params['productUpdatesFeedUrl'], Yii::app()->basePath . Yii::app()->params['productUpdatesFeedCacheDir'], Yii::app()->params['productUpdatesFeedCacheExp'], Yii::app()->params['curlUserAgent']);
     if (count($latestProductUpdates) > 0) {
       foreach ($latestProductUpdates as $item) {
         $item->description = trim(str_replace(' [&#8230;]', '...', $item->description));
         $item->description = preg_replace('/The post.*appeared first on .*\./', '', $item->description);
       }
     }
-    $latestBlogUpdates = RssHelper::getItems(Yii::app()->params['blogFeedUrl'], 1, Yii::app()->basePath . Yii::app()->params['blogFeedCacheDir'], Yii::app()->params['blogFeedCacheExp'], Yii::app()->params['curlUserAgent']);
+    $latestBlogUpdates = RssHelper::getItemsByLimit(1, Yii::app()->params['blogFeedUrl'], Yii::app()->basePath . Yii::app()->params['blogFeedCacheDir'], Yii::app()->params['blogFeedCacheExp'], Yii::app()->params['curlUserAgent']);
 
     $this->render('login', ['model' => $model, 'latestProductUpdates' => $latestProductUpdates, 'latestBlogUpdates' => $latestBlogUpdates]);
   }
