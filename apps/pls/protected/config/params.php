@@ -1,4 +1,7 @@
 <?php
+
+// TODO: abstract the cache dir values to environment vars
+
 return [
   'title'                     => 'PLS 3rd Learning',
   'adminEmail'                => 'contact@pls3rdlearning.com',
